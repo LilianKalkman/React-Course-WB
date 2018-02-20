@@ -28,10 +28,24 @@ class App extends Component {
     });
     // achter syncstate zet je de plek waar je je state naar wilt syncen, is soort path in je firebase
     // en in het object (tweede argument) zet je wAt je daar naar toe wilt sycnen.
+
+    const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
+    if(localStorageRef){
+      this.setState(
+        {
+          order: JSON.parse(localStorageRef)
+        }
+      );
+    }
   }
 
   componentWillUnmount(){
     base.removeBinding(this.ref);
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    localStorage.setItem(`order-${this.props.params.storeId}`,
+    JSON.stringify(nextState.order));
   }
 
   addFish(fish){
@@ -67,7 +81,10 @@ class App extends Component {
             }
             </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order}/>
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          params={this.props.params}/>
         <Inventory addFish={this.addFish} loadFishes={this.loadSampleFishes}/>
       </div>
     );
