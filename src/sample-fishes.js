@@ -1,5 +1,5 @@
 // This is just some sample data so you don't have to think of your own!
-const fishes = {
+const SampleFishes = {
   fish1: {
     name: 'Pacific Halibut',
     image: 'https://media.istockphoto.com/photos/grilled-halibut-with-spinach-leeks-and-pine-nuts-picture-id503337620?k=6&m=503337620&s=612x612&w=0&h=C2RuTj4IDKvEvkC0J2i_7x2rnMlspq8CTcVVtdqd5u8=',
@@ -73,4 +73,4 @@ const fishes = {
   }
 };
 
-export default fishes;
+export default SampleFishes;
