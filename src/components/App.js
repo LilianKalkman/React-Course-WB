@@ -4,6 +4,7 @@ import Order from './order';
 import Inventory from './inventory';
 import SampleFishes from '../sample-fishes';
 import FishList from './list-fishes';
+import base from '../base';
 
 class App extends Component {
   constructor(){
@@ -17,7 +18,20 @@ class App extends Component {
     this.addFish = this.addFish.bind(this);
     this.loadSampleFishes = this.loadSampleFishes.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+  }
 
+  componentWillMount(){
+    this.ref = base.syncState(`${this.props.params.storeId}/fishes`,
+    {
+      context: this,
+      state: 'fishes'
+    });
+    // achter syncstate zet je de plek waar je je state naar wilt syncen, is soort path in je firebase
+    // en in het object (tweede argument) zet je wAt je daar naar toe wilt sycnen.
+  }
+
+  componentWillUnmount(){
+    base.removeBinding(this.ref);
   }
 
   addFish(fish){
