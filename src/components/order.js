@@ -47,8 +47,8 @@ class Order extends Component {
           className="order"
           component="ul"
           transitionName="order"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={500}
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
           >
           {orderIds.map(this.renderOrder)}
           <li className="total">
