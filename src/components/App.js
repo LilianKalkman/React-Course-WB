@@ -18,6 +18,7 @@ class App extends Component {
     this.addFish = this.addFish.bind(this);
     this.loadSampleFishes = this.loadSampleFishes.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.updatedFish = this.updatedFish.bind(this);
   }
 
   componentWillMount(){
@@ -68,6 +69,12 @@ class App extends Component {
     this.setState({ order: order});
   }
 
+  updatedFish(key, updatedFish){
+    const fishes = {...this.state.fishes};
+    fishes[key] = updatedFish;
+    this.setState({ fishes: fishes});
+  }
+
   render(){
     return(
       <div className="catch-of-the-day">
@@ -85,7 +92,11 @@ class App extends Component {
           fishes={this.state.fishes}
           order={this.state.order}
           params={this.props.params}/>
-        <Inventory addFish={this.addFish} loadFishes={this.loadSampleFishes}/>
+        <Inventory
+          addFish={this.addFish}
+          loadFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
+          updateFish={this.updatedFish}/>
       </div>
     );
   }
