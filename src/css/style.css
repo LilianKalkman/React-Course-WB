@@ -1,6 +1,6 @@
 .order-enter {
   background: #f00;
-  transition: all 0.5s;
+  transition: all 1s;
   transform: translateX(-120%) rotate(1000deg);
   max-height: 0;
   padding: 0 !important;
@@ -19,10 +19,27 @@
 }
 .order-leave-active {
   background: #008000;
-  transition: all 0.5s;
-  transform: translateX(-120%);
+  transition: all 1s;
+  transform: translateX(120%);
   max-height: 0;
   padding: 0 !important;
+}
+.count-enter {
+  transition: all 0.25s;
+  transform: translateY(100%);
+}
+.count-enter.count-enter-active {
+  transform: translateY(0);
+}
+.count-leave {
+  transition: all 0.25s;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(0);
+}
+.count-leave.count-leave-active {
+  transform: translateY(-100%);
 }
 @font-face {
   font-family: "haymakerregular";
